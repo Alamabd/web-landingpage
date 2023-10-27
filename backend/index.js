@@ -1,6 +1,6 @@
-const http = require("http");
-const cors = require("cors");
-const { database } = require("./db");
+import  http from "http"
+import cors from "cors";
+import { database } from "./db.js";
 
 const server = http.createServer((req, res) => {
 	res.setHeader("Access-Control-Allow-Origin", "*");
