@@ -1,1 +1,45 @@
-const 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fitur selesai</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            border-bottom: 1px groove;
+        }
+        #content {
+            padding: 1rem;
+            border: 1px groove;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+    <div id="content"></div>
+    <script>
+        const content = document.getElementById("content");
+
+        fetch("http://localhost:4000")
+        .then(response => {
+            return response.json();
+        })
+        .then(data => {       
+            content.innerHTML = `
+                <h1>author: ${data.author}</h1>
+                <h2>message: ${data.message}</h2>
+            `;
+        }).catch(error => {
+            console.log(error);
+        })
+
+    </script>
+</body>
+</html>

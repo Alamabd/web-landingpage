@@ -1,20 +1,20 @@
-import express from "express";
-import cors from "cors";
+const http = require("http");
+const cors = require('cors')
 
-const app = express();
+const server = http.createServer((req, res) => {
+	res.setHeader("Access-Control-Allow-Origin", "*");
+	res.setHeader("Content-Type", "application/json");
+	res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+	const jsonResponse = {
+		message: "Ini adalah contoh server JSON dengan Node.js",
+		author: "Nama Anda",
+	};
 
-app.use(cors());
-app.use(express.json());
-
-app.get("/product", (req, res) => {
-	res.json({
-		id: 1,
-		nama: "sunlight",
-		deskripsi: "produk sunlight untuk cuci piring",
-		harga: 10000,
-	});
+	res.end(JSON.stringify(jsonResponse));
 });
 
-app.listen(4000, () => {
-	console.log("Server is listening on port 4000");
+const port = 4000;
+
+server.listen(port, () => {
+	console.log(`Server berjalan di http://localhost:${port}`);
 });
