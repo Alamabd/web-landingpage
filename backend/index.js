@@ -1,16 +1,15 @@
 const http = require("http");
+const cors = require('cors')
 
 const server = http.createServer((req, res) => {
-	// Set header untuk memberi tahu klien bahwa respons adalah JSON
+	res.setHeader("Access-Control-Allow-Origin", "*");
 	res.setHeader("Content-Type", "application/json");
-
-	// Data JSON yang akan direspons
+	res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
 	const jsonResponse = {
 		message: "Ini adalah contoh server JSON dengan Node.js",
 		author: "Nama Anda",
 	};
 
-	// Merubah data JSON menjadi string dan mengirimkannya sebagai respons
 	res.end(JSON.stringify(jsonResponse));
 });
 
